@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -13,16 +13,22 @@ import { FIREBASE_CONFIG } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CustomerListService } from '../pages/customer-list/customer-list.service';
 import { CustomerListPage } from '../pages/customer-list/customer-list';
-import { CustomerPage } from '../pages/customer/customer';
 import { CustomerPageModule } from '../pages/customer/customer.module';
-import { AddressComponent } from '../components/address/address.component';
 import { CityCodesService } from '../components/address/city-codes.service';
+import { CalendarComponent } from '../components/calendar/calendar.component';
+import { NgCalendarModule  } from 'ionic2-calendar';
+import { EventModalPage } from '../components/calendar/event-modal/event-modal';
+import { EventModalPageModule } from '../components/calendar/event-modal/event-modal.module';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    CustomerListPage
+    CustomerListPage, 
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -30,20 +36,24 @@ import { CityCodesService } from '../components/address/city-codes.service';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
-    CustomerPageModule
+    CustomerPageModule,
+    NgCalendarModule,
+    EventModalPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    CustomerListPage
+    CustomerListPage,
+    CalendarComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CustomerListService,
-    CityCodesService
+    CityCodesService,
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
   ]
 })
 export class AppModule {}
