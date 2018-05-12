@@ -1,0 +1,37 @@
+<!-- <ion-item>
+    <div item-start style="width: 30vw">
+      <ion-label color="primary" stacked>Numéro </ion-label>
+      <ion-input [(ngModel)]="address.numero" placeholder="123" type="text"></ion-input>
+    </div>
+    <div item-end style="width: 70vw">
+      <ion-label color="primary" stacked>Complément </ion-label>
+      <ion-input [(ngModel)]="address.complement" placeholder="Résidence Bob Marley" type="text"></ion-input>
+    </div>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>Rue</ion-label>
+    <ion-input [(ngModel)]="address.rue" type="text" placeholder="Avenue du Yaourt"></ion-input>
+  </ion-item>
+  <ion-item item-start>
+    <div item-start style="width: 30vw">
+      <ion-label color="primary" stacked>Code Postal </ion-label>
+      <ion-input [(ngModel)]="address.codePostal" type="text" placeholder="91000"></ion-input>
+    </div>
+    <div item-end style="width: 70vw">
+      <ion-label color="primary" stacked>Ville </ion-label>
+      <ion-input [(ngModel)]="address.ville" type="text" placeholder="LA VILLE"></ion-input>
+    </div>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>Notes </ion-label>
+    <ion-input [(ngModel)]="address.notes" type="text" placeholder="interphone, étage, etc..."></ion-input>
+  </ion-item> -->
+  <ion-searchbar (ionInput)="getCodeCityList($event)"></ion-searchbar>
+  <ion-list *ngIf="showList">
+    <ion-item *ngFor="let item of codeCityList">
+      {{ item.code }}  {{ item.city }}
+    </ion-item>
+  </ion-list>
+
+  <ion-item></ion-item>
+  

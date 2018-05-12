@@ -5,11 +5,11 @@ export class Customer {
     type?: string;
     birthday?: Date;
     telephone?: Telephone = new Telephone();    
-    address?: address = new address();
+    address?: Address = new Address();
     serviceList?: Array<string>;
 }
 
-export class address {
+export class Address {
     numero?: string;
     complement?: string;
     rue?: string;
