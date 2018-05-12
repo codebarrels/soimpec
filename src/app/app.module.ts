@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
@@ -13,16 +14,20 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ListPage } from '../pages/customer/list/list';
 import { CustomerListService } from '../pages/customer/customer-list.service';
 import { CustomerPage } from '../pages/customer/page/customer';
+import { AddressComponent } from '../components/address/address.component';
+import { CityCodesService } from '../components/address/city-codes.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    CustomerPage
+    CustomerPage,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule
@@ -32,14 +37,16 @@ import { CustomerPage } from '../pages/customer/page/customer';
     MyApp,
     HomePage,
     ListPage,
-    CustomerPage
+    CustomerPage,
+    AddressComponent
     ],
   
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CustomerListService
+    CustomerListService,
+    CityCodesService
     
   ]
 })
