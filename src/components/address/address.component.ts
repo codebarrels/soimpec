@@ -1,4 +1,4 @@
-import { Component, Output } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 import { CityCodesService } from "./city-codes.service";
 import { CityCode } from "./cities.model";
 
@@ -7,10 +7,11 @@ import { CityCode } from "./cities.model";
     templateUrl: 'address.component.html',
 })
 export class AddressComponent {
-    private codeCityList: Array<CityCode>;;
+    private codeCityList: Array<CityCode>;
     private showList: boolean = false;
+    private searchText: string = "";
 
-    @Output() address;
+    @Output() cityCode: EventEmitter<CityCode> = new EventEmitter();
 
     constructor(private cityCodesService: CityCodesService) { }
 
@@ -39,4 +40,14 @@ export class AddressComponent {
         }
     }
 
+    sendAdress(item: CityCode) {
+        this.showList = false ;
+        this.cityCode.emit(item);
+        this.searchText = "";
+    }
+
+    clear(event) {
+        this.showList = false ;
+        this.searchText = "";
+    }
 }

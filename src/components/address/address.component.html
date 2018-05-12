@@ -1,8 +1,8 @@
-<ion-searchbar (ionInput)="getCodeCityList($event)" placeholder="Code postale ou ville" spellcheck="true"></ion-searchbar>
+<ion-searchbar (ionInput)="getCodeCityList($event)" [(ngModel)]="searchText" (ionClear)=clear($event)></ion-searchbar>
 <ion-list *ngIf="showList">
-    <ion-item *ngFor="let item of codeCityList">
-        {{ item.code }} {{ item.city }}
-    </ion-item>
+  <ion-item *ngFor="let item of codeCityList" (click)="sendAdress(item)">
+    {{ item.code }} {{ item.city }}
+  </ion-item>
 </ion-list>
 
 <ion-item></ion-item>
