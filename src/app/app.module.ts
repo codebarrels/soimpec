@@ -10,31 +10,30 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { ListPage } from '../pages/customer/list/list';
-import { CustomerListService } from '../pages/customer/customer-list.service';
-import { CustomerPage } from '../pages/customer/page/customer';
+import { CustomerListService } from '../pages/customer-list/customer-list.service';
+import { CustomerListPage } from '../pages/customer-list/customer-list';
+import { CustomerPage } from '../pages/customer/customer';
+import { CustomerPageModule } from '../pages/customer/customer.module';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
-    CustomerPage
+    CustomerListPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    CustomerPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
-    CustomerPage
-    ],
-  
+    CustomerListPage
+  ],
   providers: [
     StatusBar,
     SplashScreen,

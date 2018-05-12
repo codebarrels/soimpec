@@ -1,6 +1,6 @@
-import { Customer } from './customer.model';
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
+import { Customer } from "../customer/customer.model";
 
 @Injectable() 
 

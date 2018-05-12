@@ -1,18 +1,17 @@
-import { Customer } from '../customer.model';
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { ActionSheetController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-import { CustomerListService } from '../customer-list.service';
-import { CustomerPage } from '../page/customer';
-import { ModifyCustomerPage } from '../page/modify-customer/modify-customer';
+import { Customer } from '../customer/customer.model';
+import { CustomerListService } from './customer-list.service';
+import { CustomerPage } from '../customer/customer';
 
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'customer-list.html'
 })
-export class ListPage {
+export class CustomerListPage {
   customersList: Observable<Customer[]>;
 
   constructor(
@@ -53,7 +52,7 @@ export class ListPage {
           role: 'modify',
           cssClass: '',
           handler: () => {
-            this.navCtrl.push(ModifyCustomerPage, { customer: customer })
+            this.navCtrl.push(CustomerPage, { customer: customer })
             console.log('edit clicked');
           }
         }, {
