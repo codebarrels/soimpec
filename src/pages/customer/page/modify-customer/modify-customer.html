@@ -11,17 +11,17 @@
   <ion-item>
     <div item-start>
         <ion-label color="primary" stacked>Prénom</ion-label>
-        <ion-input [(ngModel)]="customer.prenom" type="text" placeholder="Prénom"></ion-input>    
+        <ion-input [(ngModel)]="customer.firstName" type="text" placeholder="Prénom"></ion-input>    
     </div>
     <div item-end>
         <ion-label color="primary" stacked>Nom</ion-label>
-        <ion-input [(ngModel)]="customer.nom" type="text" placeholder="Nom"></ion-input>    
+        <ion-input [(ngModel)]="customer.lastName" type="text" placeholder="Nom"></ion-input>    
     </div>
   </ion-item>
   <ion-item>
     <ion-label>Type de Cliente</ion-label>
-    <ion-select [(ngModel)]="customer.typeCliente" interface="popover">
-      <ion-option value="black">black</ion-option>
+    <ion-select [(ngModel)]="customer.type" interface="popover">
+      <!-- <ion-option value="black">black</ion-option> -->
       <ion-option value="régulière">régulière</ion-option>
       <ion-option value="occasionnelle">occasionnelle</ion-option>
       <ion-option value="privilège">privilège</ion-option>
@@ -42,36 +42,36 @@
   <ion-item>
     <div item-start style="width: 30vw">
       <ion-label color="primary" stacked>Numéro </ion-label>
-      <ion-input [(ngModel)]="customer.adresse.numero" placeholder="123" type="text"></ion-input>
+      <ion-input [(ngModel)]="customer.address.numero" placeholder="123" type="text"></ion-input>
     </div>
     <div item-end style="width: 70vw">
       <ion-label color="primary" stacked>Complément </ion-label>
-      <ion-input [(ngModel)]="customer.adresse.complement" placeholder="Résidence Bob Marley" type="text"></ion-input>
+      <ion-input [(ngModel)]="customer.address.complement" placeholder="Résidence Bob Marley" type="text"></ion-input>
     </div>
   </ion-item>
   <ion-item>
     <ion-label color="primary" stacked>Rue</ion-label>
-    <ion-input [(ngModel)]="customer.adresse.rue" type="text" placeholder="Avenue du Yaourt"></ion-input>
+    <ion-input [(ngModel)]="customer.address.rue" type="text" placeholder="Avenue du Yaourt"></ion-input>
   </ion-item>
   <ion-item item-start>
     <div item-start style="width: 30vw">
       <ion-label color="primary" stacked>Code Postal </ion-label>
-      <ion-input [(ngModel)]="customer.adresse.codePostal" type="text" placeholder="91000"></ion-input>
+      <ion-input [(ngModel)]="customer.address.codePostal" type="text" placeholder="91000"></ion-input>
     </div>
     <div item-end style="width: 70vw">
       <ion-label color="primary" stacked>Ville </ion-label>
-      <ion-input [(ngModel)]="customer.adresse.ville" type="text" placeholder="LA VILLE"></ion-input>
+      <ion-input [(ngModel)]="customer.address.ville" type="text" placeholder="LA VILLE"></ion-input>
     </div>
   </ion-item>
   <ion-item>
     <ion-label color="primary" stacked>Notes </ion-label>
-    <ion-input [(ngModel)]="customer.adresse.notes" type="text" placeholder="interphone, étage, etc..."></ion-input>
+    <ion-input [(ngModel)]="customer.address.notes" type="text" placeholder="interphone, étage, etc..."></ion-input>
   </ion-item>
   <ion-item></ion-item>
   
   <ion-item>
-        <ion-label>Prestations</ion-label>
-        <ion-select [(ngModel)]="customer.prestations" multiple="true">
+        <ion-label>serviceList</ion-label>
+        <ion-select [(ngModel)]="customer.serviceList" multiple="true">
           <ion-option>Epilation</ion-option>
           <ion-option>Maquillage</ion-option>
           <ion-option>Soins</ion-option>
@@ -79,7 +79,7 @@
           <ion-option>Ongles</ion-option>
         </ion-select>
   </ion-item>
-  <ion-item *ngFor="let prest of customer.prestations">
+  <ion-item *ngFor="let prest of customer.serviceList">
     <div style="text-align:center">{{prest}}</div>
   </ion-item>
   
