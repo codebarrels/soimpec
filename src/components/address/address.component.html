@@ -1,0 +1,8 @@
+<ion-searchbar (ionInput)="getCodeCityList($event)" placeholder="Code postale ou ville" spellcheck="true"></ion-searchbar>
+<ion-list *ngIf="showList">
+    <ion-item *ngFor="let item of codeCityList">
+        {{ item.code }} {{ item.city }}
+    </ion-item>
+</ion-list>
+
+<ion-item></ion-item>
