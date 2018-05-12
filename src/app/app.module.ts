@@ -22,8 +22,7 @@ import { CityCodesService } from '../components/address/city-codes.service';
   declarations: [
     MyApp,
     HomePage,
-    CustomerListPage,
-    AddressComponent
+    CustomerListPage
   ],
   imports: [
     BrowserModule,
@@ -37,8 +36,7 @@ import { CityCodesService } from '../components/address/city-codes.service';
   entryComponents: [
     MyApp,
     HomePage,
-    CustomerListPage,
-    AddressComponent
+    CustomerListPage
   ],
   providers: [
     StatusBar,
@@ -46,7 +44,6 @@ import { CityCodesService } from '../components/address/city-codes.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CustomerListService,
     CityCodesService
-    
   ]
 })
 export class AppModule {}

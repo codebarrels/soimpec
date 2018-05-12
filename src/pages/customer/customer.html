@@ -3,60 +3,81 @@
         <ion-title>{{pageTitle}}</ion-title>
         <ion-buttons right>
             <button ion-button (click)="executeAction(pageAction, customer)">
-                 {{pageAction}}  
-                <ion-icon [name]="getActionIcon(pageAction)"></ion-icon>
-            </button>
+        {{pageAction}}
+        <ion-icon [name]="getActionIcon(pageAction)"></ion-icon>
+      </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content inset>
-    <ion-item>
-        <div item-start>
-            <ion-label color="primary" stacked>Prénom</ion-label>
-            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.firstName" type="text" placeholder="Prénom"></ion-input>
-        </div>
-        <div item-end>
-            <ion-label color="primary" stacked>Nom</ion-label>
-            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.lastName" type="text" placeholder="Nom"></ion-input>
-        </div>
-    </ion-item>
-    <ion-item>
-        <ion-label>Type de Cliente</ion-label>
-        <ion-select [disabled]="!isEditMode" [(ngModel)]="customer.type" interface="popover">
-            <!-- <ion-option value="black">black</ion-option> -->
-            <ion-option value="régulière">régulière</ion-option>
-            <ion-option value="occasionnelle">occasionnelle</ion-option>
-            <ion-option value="privilège">privilège</ion-option>
-        </ion-select>
-    </ion-item>
-    <ion-item>
-        <ion-label>Anniversaire</ion-label>
-        <ion-datetime [disabled]="!isEditMode" displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="birthday"></ion-datetime>
-    </ion-item>
-    <ion-item>
-        <ion-label color="primary" stacked>Téléphone n°1</ion-label>
-        <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.telephone.num1" type="tel" placeholder="06 12 34 56 78"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label color="primary" stacked>Téléphone n°2</ion-label>
-        <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.telephone.num2" type="tel" placeholder="01 23 45 67 89"></ion-input>
-    </ion-item>
-    <ion-item>
-        <div item-start style="width: 30vw">
-            <ion-label color="primary" stacked>Numéro </ion-label>
-            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.numero" placeholder="123" type="text"></ion-input>
-        </div>
-        <div item-end style="width: 70vw">
-            <ion-label color="primary" stacked>Complément </ion-label>
-            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.complement" placeholder="Résidence Bob Marley" type="text"></ion-input>
-        </div>
-    </ion-item>
-    <ion-item>
-        <ion-label color="primary" stacked>Rue</ion-label>
-        <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.rue" type="text" placeholder="Avenue du Yaourt"></ion-input>
-    </ion-item>
-    <ion-item item-start>
+    <ion-list>
+        <ion-list-header color="light">General Information</ion-list-header>
+        <ion-item>
+            <div item-start>
+                <ion-label color="primary" stacked>Prénom</ion-label>
+                <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.firstName" type="text" placeholder="Prénom"></ion-input>
+            </div>
+            <div item-end>
+                <ion-label color="primary" stacked>Nom</ion-label>
+                <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.lastName" type="text" placeholder="Nom"></ion-input>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>Type de Cliente</ion-label>
+            <ion-select [disabled]="!isEditMode" [(ngModel)]="customer.type" interface="popover">
+                <!-- <ion-option value="black">black</ion-option> -->
+                <ion-option value="régulière">régulière</ion-option>
+                <ion-option value="occasionnelle">occasionnelle</ion-option>
+                <ion-option value="privilège">privilège</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Anniversaire</ion-label>
+            <ion-datetime [disabled]="!isEditMode" displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="birthday"></ion-datetime>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header color="light">Contact</ion-list-header>
+        <ion-item>
+            <ion-label color="primary" stacked>Téléphone n°1</ion-label>
+            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.telephone.num1" type="tel" placeholder="06 12 34 56 78"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Téléphone n°2</ion-label>
+            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.telephone.num2" type="tel" placeholder="01 23 45 67 89"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header color="light">Address</ion-list-header>
+        <ion-item>
+            <address-component></address-component>
+        </ion-item>
+        <ion-item>
+            <div item-start style="width: 30vw">
+                <ion-label color="primary" stacked>Numéro </ion-label>
+                <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.numero" placeholder="123" type="text"></ion-input>
+            </div>
+            <div item-end style="width: 70vw">
+                <ion-label color="primary" stacked>Complément </ion-label>
+                <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.complement" placeholder="Résidence Bob Marley" type="text"></ion-input>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Rue</ion-label>
+            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.rue" type="text" placeholder="Avenue du Yaourt"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Notes </ion-label>
+            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.notes" type="text" placeholder="interphone, étage, etc..."></ion-input>
+        </ion-item>
+    </ion-list>
+
+
+
+    <!-- <ion-item item-start>
         <div item-start style="width: 30vw">
             <ion-label color="primary" stacked>Code Postal </ion-label>
             <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.codePostal" type="text" placeholder="91000"></ion-input>
@@ -65,26 +86,17 @@
             <ion-label color="primary" stacked>Ville </ion-label>
             <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.ville" type="text" placeholder="LA VILLE"></ion-input>
         </div>
-    </ion-item>
-    <ion-item>
-        <ion-label color="primary" stacked>Notes </ion-label>
-        <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.notes" type="text" placeholder="interphone, étage, etc..."></ion-input>
-    </ion-item>
-    <ion-item></ion-item>
-    <ion-item>
-        <ion-label>serviceList</ion-label>
-        <ion-select [disabled]="!isEditMode" [(ngModel)]="customer.serviceList" multiple="true">
-            <ion-option>Epilation</ion-option>
-            <ion-option>Maquillage</ion-option>
-            <ion-option>Soins</ion-option>
-            <ion-option>Regard</ion-option>
-            <ion-option>Ongles</ion-option>
-        </ion-select>
-    </ion-item>
-    <ion-item *ngFor="let prest of customer.serviceList">
-        <div style="text-align:center">{{prest}}</div>
-    </ion-item>
-    <ion-item></ion-item>
-    <!-- <button ion-button block (click)="addCustomer(customer)"> Ajouter</button> -->
-
+    </ion-item> -->
+    <ion-list>
+        <ion-list-header color="light">Services</ion-list-header>
+        <ion-item>
+            <ion-select [disabled]="!isEditMode" [(ngModel)]="customer.serviceList" multiple="true">
+                <ion-option>Epilation</ion-option>
+                <ion-option>Maquillage</ion-option>
+                <ion-option>Soins</ion-option>
+                <ion-option>Regard</ion-option>
+                <ion-option>Ongles</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
 </ion-content>
