@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Customer } from './customer.model';
 import { CustomerListService } from '../customer-list/customer-list.service';
 import { CustomerListPage } from '../customer-list/customer-list';
+import { AddressPage } from '../address/address';
 
 
 @IonicPage()
@@ -12,25 +13,36 @@ import { CustomerListPage } from '../customer-list/customer-list';
 })
 export class CustomerPage {
 
+  AddressPage: typeof AddressPage;
   isEditMode = true;
-  pageTitle='Add customer';
-  pageAction="Add";
+  pageTitle = 'Add customer';
+  pageAction = "Add";
   customer: Customer = new Customer();
   customerList = [];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private customerListService: CustomerListService) {
-      this.customer = navParams.get('customer') || new Customer();
-      if(this.customer && this.customer.firstName) {
-        this.pageTitle = this.customer.firstName + " " + this.customer.lastName;
-        this.pageAction = "Edit";
-        this.isEditMode = undefined;
-      }
+    this.AddressPage = AddressPage;
+    this.customer = navParams.get('customer') || new Customer();
+    if (this.customer && this.customer.firstName) {
+      this.pageTitle = this.customer.firstName + " " + this.customer.lastName;
+      this.pageAction = "Edit";
+      this.isEditMode = undefined;
+    }
   }
 
+  public ionViewWillEnter() {
+    this.customer.address = this.navParams.get('address') || null;
+    console.log(this.customer.address);
+  }
+
+  // goToAddress(){
+  //   this.navCtrl.push(AddressPage, {}, { animate: true, animation: 'transition', duration: 500, direction: 'up' });
+  // }
+
   executeAction(action: string, customer: Customer) {
-    if(action === "Add") {
+    if (action === "Add") {
       this.addCustomer(customer);
     } else if (action === "Save") {
       this.updateCustomer(customer);
@@ -41,7 +53,7 @@ export class CustomerPage {
   }
 
   getActionIcon(action: String) {
-    if(action === "Add" || action === "Save") {
+    if (action === "Add" || action === "Save") {
       return "md-checkmark-circle-outline";
     } else {
       return "md-create";

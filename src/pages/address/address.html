@@ -1,0 +1,49 @@
+<address-component (city)="onCityChange($event)"></address-component>
+<ion-content *ngIf="!city.code" inset>
+    <ion-card style="margin-top: 70px;">
+        <img src="assets/imgs/address.png" style="width: 80%; margin: auto; margin-top:20px; max-width: 500px;" />
+        <ion-card-content>
+            <ion-card-title>
+                Find the right Address!
+            </ion-card-title>
+            <p>
+                Start typing the zip code or city/Town name, no one regret that !
+            </p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+<ion-content *ngIf="city.code" style="margin-top: 70px;" inset>
+    <ion-list>
+        <ion-list-header color="light">Rue</ion-list-header>
+        <ion-item>
+            <div item-start style="width: 30vw">
+                <ion-label color="primary" stacked>Numéro </ion-label>
+                <ion-input [(ngModel)]="address.numero" placeholder="123" type="text"></ion-input>
+            </div>
+            <div item-end style="width: 70vw">
+                <ion-label color="primary" stacked>Complément </ion-label>
+                <ion-input [(ngModel)]="address.complement" placeholder="Résidence Bob Marley" type="text"></ion-input>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Rue</ion-label>
+            <ion-input [(ngModel)]="address.rue" type="text" placeholder="Avenue du Yaourt"></ion-input>
+        </ion-item>
+        <ion-list-header color="light">Notes</ion-list-header>
+        <ion-item>
+            <ion-input [(ngModel)]="address.notes" type="text" placeholder="interphone, étage, etc..."></ion-input>
+        </ion-item>
+        <ion-list-header color="light">City</ion-list-header>
+        <ion-item>
+            {{address.codePostal}}, {{address.ville}}, FRANCE
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer *ngIf="city.code">
+    <ion-toolbar>
+        <button ion-button ion-button full [navPush]="AddressPage" (click)="validate()">
+                    <ion-icon name="md-checkmark-circle-outline"></ion-icon>
+                    Validate
+            </button>
+    </ion-toolbar>
+</ion-footer>

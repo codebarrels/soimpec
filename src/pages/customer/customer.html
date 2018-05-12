@@ -53,40 +53,15 @@
     <ion-list>
         <ion-list-header color="light">Address</ion-list-header>
         <ion-item>
-            <address-component></address-component>
-        </ion-item>
-        <ion-item>
-            <div item-start style="width: 30vw">
-                <ion-label color="primary" stacked>Numéro </ion-label>
-                <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.numero" placeholder="123" type="text"></ion-input>
-            </div>
-            <div item-end style="width: 70vw">
-                <ion-label color="primary" stacked>Complément </ion-label>
-                <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.complement" placeholder="Résidence Bob Marley" type="text"></ion-input>
-            </div>
-        </ion-item>
-        <ion-item>
-            <ion-label color="primary" stacked>Rue</ion-label>
-            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.rue" type="text" placeholder="Avenue du Yaourt"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label color="primary" stacked>Notes </ion-label>
-            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.notes" type="text" placeholder="interphone, étage, etc..."></ion-input>
+            <button *ngIf="!customer.address" ion-button round large outline full [navPush]="AddressPage">
+                <ion-icon name="add"></ion-icon> Add Address
+            </button>
+            <button *ngIf="customer.address" ion-button round large outline full [navPush]="AddressPage">
+                    <ion-icon ios="ios-home" md="md-home"></ion-icon>
+                    {{customer.address.numero}} {{customer.address.rue}} {{customer.address.codePostal}} {{customer.address.ville}}
+                </button>
         </ion-item>
     </ion-list>
-
-
-
-    <!-- <ion-item item-start>
-        <div item-start style="width: 30vw">
-            <ion-label color="primary" stacked>Code Postal </ion-label>
-            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.codePostal" type="text" placeholder="91000"></ion-input>
-        </div>
-        <div item-end style="width: 70vw">
-            <ion-label color="primary" stacked>Ville </ion-label>
-            <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.address.ville" type="text" placeholder="LA VILLE"></ion-input>
-        </div>
-    </ion-item> -->
     <ion-list>
         <ion-list-header color="light">Services</ion-list-header>
         <ion-item>

@@ -1,4 +1,4 @@
-import { Component, Output } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 import { CityCodesService } from "./city-codes.service";
 import { CityCode } from "./cities.model";
 
@@ -10,9 +10,14 @@ export class AddressComponent {
     private codeCityList: Array<CityCode>;;
     private showList: boolean = false;
 
-    @Output() address;
+    @Output() city: EventEmitter<CityCode> = new EventEmitter(); 
 
     constructor(private cityCodesService: CityCodesService) { }
+
+    selectCity(item: CityCode) {
+        this.showList = false ;
+        this.city.emit(item);
+    } 
 
     getCodeCityList(event: any) {
         let val = event.target.value;
