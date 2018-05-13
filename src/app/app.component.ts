@@ -5,10 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Tab1Page } from '../pages/tab1/tab1';
 import { Tab2Page } from '../pages/tab2/tab2';
 
-// import { HomePage } from '../pages/home/home';
-// import { CustomerListPage } from '../pages/customer-list/customer-list';
-
-
 export interface PageInterface {
   title: string;
   pageName: string;
@@ -28,7 +24,6 @@ export class MyApp {
     { title: 'Calendar', pageName: 'TabsPage', tabComponent: 'Tab2Page', index: 1, icon: 'calendar' }
   ];
   rootPage: any = 'LoginPage';
-
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();

@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+        <ion-searchbar (ionInput)="getCodeCityList($event)" placeholder="search by customer" spellcheck="true"></ion-searchbar>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+
+    <ion-list>
+        <ion-item *ngFor="let customer of customersList | async" (click)="selectCustomer(customer)">
+            <ion-avatar item-start>
+                <img [src]="getAvatar(customer.key)">
+            </ion-avatar>
+            {{customer?.firstName}} {{customer?.lastName}}
+            <div item-end>
+                {{customer?.type}}
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
