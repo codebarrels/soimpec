@@ -1,11 +1,13 @@
-import { Address } from "../../pages/customer/customer.model";
+import {  Customer } from "../../pages/customer/customer.model";
+import { CalendarOptions } from "@ionic-native/calendar";
 
 export class EventCalendar {
    key: string; 
+   customer: Customer;
    title: string;
-   address: Address;
    notes: string;
-   startTime: Date;
-   endTime: Date;
-   calOptions: string;
+   startTime: string;
+   endTime: string;
+   calOptions: CalendarOptions;
+   allDay: string;
 }
