@@ -13,11 +13,4 @@ export class HomePage {
   private calendarService: CalendarService) {
   }
 
-  addEvent() {
-    this.calendarService.createEvent();
-  }
-
-  openAgenda() {
-    this.calendarService.openAgenda();
-  }
 }

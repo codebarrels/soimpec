@@ -15,16 +15,13 @@ export class CalendarService {
         );
     }
 
-    createEvent() {
-        var startDate = new Date(2018, 5, 15, 7, 30, 0, 0); // beware: month 0 = january, 11 = december
-        var endDate = new Date(2018, 5, 15, 19, 30, 0, 0);
-        var title = "My nice event";
+    createEvent(eventData) {
         var location = "Home";
         var notes = "Some notes about this event.";
         var calOptions = this.calendar.getCalendarOptions();
 
         if (this.calendar.hasReadWritePermission()) {
-            this.calendar.createEventWithOptions(title, location, notes, startDate, endDate, calOptions).then(message => {
+            this.calendar.createEventWithOptions(eventData.title, location, notes, eventData.startTime, eventData.endTime, calOptions).then(message => {
                 alert("Success: " + JSON.stringify(message));
             }).catch(message => {
                 alert("Error: " + message);

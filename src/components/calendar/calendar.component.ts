@@ -1,6 +1,7 @@
 import { Component, LOCALE_ID } from "@angular/core";
 import { NavController, ModalController, AlertController } from 'ionic-angular';
 import * as moment from 'moment';
+import { CalendarService } from "./calendar.service";
 @Component({
     selector: 'calendar-component',
     templateUrl: 'calendar.component.html',
@@ -21,8 +22,13 @@ export class CalendarComponent {
     constructor(
         public navCtrl: NavController,
         private modalCtrl: ModalController,
-        private alertCtrl: AlertController) { }
+        private alertCtrl: AlertController,
+        private calendarService: CalendarService) { }
 
+    openAgenda() {
+        this.calendarService.openAgenda();
+    }
+    
     addEvent() {
         let modal = this.modalCtrl.create('EventModalPage', { selectedDay: this.selectedDay });
         modal.present();
@@ -39,6 +45,8 @@ export class CalendarComponent {
                 setTimeout(() => {
                     this.eventSource = events;
                 });
+
+                this.calendarService.createEvent(eventData);
             }
         });
     }
