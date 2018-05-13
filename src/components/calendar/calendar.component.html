@@ -1,23 +1,31 @@
 <ion-header>
-    <ion-navbar color="primary">
-        <ion-title>
-            {{ viewTitle }}
-        </ion-title>
-        <ion-buttons end>
-            <button ion-button icon-only (click)="addEvent()">
-        <ion-icon name="add"></ion-icon>
-      </button>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Calendar</ion-title>
+        <ion-buttons right>
+            <button color="primary" ion-button icon-only (click)="addEvent()">
+                <ion-icon name="ios-create-outline"></ion-icon>
+            </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
+        <ion-buttons center color="#c3ac3c">
+                <button ion-button color="secondary" (click)="openAgenda()">
+                    <ion-icon name="ios-calendar"></ion-icon>
+                     Agenda
+                </button>
+            </ion-buttons>
+        <ion-title start>
+            {{ viewTitle }}
+        </ion-title>
+
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)"
+        (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
     </calendar>
-    <ion-item>
-        <button ion-button full large (click)="openAgenda()">
-        <ion-icon name="calendar"></ion-icon>
-        Open Agenda
-      </button>
-    </ion-item>
 </ion-content>

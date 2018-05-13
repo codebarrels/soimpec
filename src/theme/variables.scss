@@ -34,8 +34,8 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    black,
+  secondary:  #c3ac3c,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
@@ -53,8 +53,12 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$text-input-md-show-invalid-highlight	: true;
+$text-input-md-highlight-color-valid: #cd3000;	
+$text-input-md-show-valid-highlight	: true;
+$text-input-md-highlight-color-valid: #c3ac3c;	
 
-
+$text-input-placeholder-color:(#ddd);
 
 // App Windows Variables
 // --------------------------------------------------

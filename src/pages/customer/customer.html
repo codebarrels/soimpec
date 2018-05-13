@@ -13,15 +13,15 @@
 <ion-content inset>
     <ion-list>
         <ion-list-header color="light">General Information</ion-list-header>
-        <ion-item>
-            <div item-start>
+        <ion-item item-start>
+            <!-- <div item-start> -->
                 <ion-label color="primary" stacked>Prénom</ion-label>
                 <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.firstName" type="text" placeholder="Prénom"></ion-input>
-            </div>
-            <div item-end>
+        </ion-item>
+            <ion-item item-end>
                 <ion-label color="primary" stacked>Nom</ion-label>
                 <ion-input [readonly]="!isEditMode" [(ngModel)]="customer.lastName" type="text" placeholder="Nom"></ion-input>
-            </div>
+            <!-- </div> -->
         </ion-item>
         <ion-item>
             <ion-label>Type de Cliente</ion-label>
