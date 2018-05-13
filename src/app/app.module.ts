@@ -22,6 +22,7 @@ import { EventModalPageModule } from '../components/calendar/event-modal/event-m
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
+import { Calendar } from '@ionic-native/calendar';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ registerLocaleData(localeFr);
     CalendarComponent
   ],
   providers: [
+    Calendar,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
