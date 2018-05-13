@@ -14,8 +14,22 @@
         <ion-item>
             <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-input type="text" placeholder="Customer" [(ngModel)]="event.customer"></ion-input>
+        <ion-item *ngIf="!event.customer">
+            <button ion-button full outline (click)="selectCustomer()">
+        <ion-icon name="person-add"></ion-icon> Customer
+      </button>
+        </ion-item>
+        <ion-item *ngIf="event.customer">
+            <h2>
+                <ion-icon name="person"></ion-icon>
+                {{event?.customer?.firstName}} {{event?.customer?.lastName}}
+            </h2>
+            <p>
+                {{event?.customer?.address?.numero}} {{event?.customer?.address?.rue}} {{event?.customer?.address?.codePostal}} {{event?.customer?.address?.ville}}
+            </p>
+            <button (click)="selectCustomer()" ion-button clear item-end>
+                <ion-icon name="create"></ion-icon>
+            </button>
         </ion-item>
         <ion-item>
             <ion-label>Start</ion-label>

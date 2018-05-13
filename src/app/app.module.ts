@@ -24,6 +24,7 @@ import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
 import { Calendar } from '@ionic-native/calendar';
 import { CalendarService } from '../components/calendar/calendar.service';
+import { CustomerSelectorPage } from '../pages/customer-selector/customer-selector';
 
 @NgModule({
   declarations: [
