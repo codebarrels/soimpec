@@ -6,4 +6,4 @@ Hope you'll enjoy our app for customers and appointements management.
 
 See U
 
-[view app](soimpec.2018.angularattack.io)
+[view app]("http://soimpec.2018.angularattack.io")
