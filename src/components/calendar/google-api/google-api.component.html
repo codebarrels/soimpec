@@ -1,0 +1,24 @@
+<button *ngIf='!isLoggedIn()' (click)="signIn()">sign in and create spreadsheet</button>
+
+<div *ngIf='isLoggedIn()'> 
+  <p *ngIf='!sheet'>
+    <button  (click)=create()>Create empty sheet</button>
+  </p>
+
+  <p *ngIf='sheet'>
+      <span>sheetId {{sheet.spreadsheetId}}</span>
+  </p>
+
+  <p>
+    <label>Spreadsheet id</label>
+    <input type="text" [(ngModel)]=sheetId />
+    <button (click)="findSheet()">fetch spreadsheet</button>
+  </p>
+
+  <p *ngIf="foundSheet">
+    <code>
+    {{foundSheet | json}}
+    </code>
+  </p> 
+  
+</div>

@@ -17,18 +17,28 @@ import { CustomerPageModule } from '../pages/customer/customer.module';
 import { CityCodesService } from '../components/address/city-codes.service';
 import { CalendarComponent } from '../components/calendar/calendar.component';
 import { NgCalendarModule  } from 'ionic2-calendar';
-import { EventModalPage } from '../components/calendar/event-modal/event-modal';
 import { EventModalPageModule } from '../components/calendar/event-modal/event-modal.module';
 import { registerLocaleData } from '@angular/common';
+import { GoogleApiModule, NgGapiClientConfig, NG_GAPI_CONFIG } from "ng-gapi";
 import localeFr from '@angular/common/locales/fr';
+import { GoogleApiComponent } from '../components/calendar/google-api/google-api.component';
+import { UserService } from '../components/calendar/google-api/userService';
+import { SheetResource } from '../components/calendar/google-api/sheetResource';
 registerLocaleData(localeFr);
+
+let gapiClientConfig: NgGapiClientConfig = {
+  client_id: "617226524848-d2fkljq1hmb71u9ao2442t11a3mnfss3.apps.googleusercontent.com",
+  discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
+  scope: ["https://www.googleapis.com/auth/calendar"].join(" ")
+};
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CustomerListPage, 
-    CalendarComponent
+    CalendarComponent,
+    GoogleApiComponent
   ],
   imports: [
     BrowserModule,
@@ -38,14 +48,19 @@ registerLocaleData(localeFr);
     AngularFireDatabaseModule,
     CustomerPageModule,
     NgCalendarModule,
-    EventModalPageModule
+    EventModalPageModule,
+    GoogleApiModule.forRoot({
+      provide: NG_GAPI_CONFIG,
+      useValue: gapiClientConfig
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     CustomerListPage,
-    CalendarComponent
+    CalendarComponent,
+    GoogleApiComponent  
   ],
   providers: [
     StatusBar,
@@ -53,7 +68,9 @@ registerLocaleData(localeFr);
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CustomerListService,
     CityCodesService,
-    { provide: LOCALE_ID, useValue: 'fr-FR' }
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    UserService,
+    SheetResource
   ]
 })
 export class AppModule {}
