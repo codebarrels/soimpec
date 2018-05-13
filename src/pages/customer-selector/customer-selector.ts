@@ -16,7 +16,7 @@ export class CustomerSelectorPage {
     private idCustomer: string;
     private options = {
         foreground: [255, 255, 255, 255],
-        background: [17, 69, 226, 255],
+        background: [0, 0, 0, 255],
         margin: 0.2,
         size: 128,
         format: 'svg'

@@ -8,6 +8,8 @@ import { CustomerListService } from './customer-list.service';
 import { CustomerPage } from '../customer/customer';
 import * as Identicon from 'identicon.js';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
 
 @Component({
   selector: 'page-list',
@@ -29,14 +31,16 @@ export class CustomerListPage {
     private navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
     private customerListService: CustomerListService,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    private callNumber: CallNumber,
+    private sms: SMS) {
     this.customersList = this.customerListService
       .getCustomersList()
       .snapshotChanges()
       .map(
         changes => {
           return changes.map(c => {
-            return({
+            return ({
               key: c.payload.key,
               ...c.payload.val()
             })
@@ -46,7 +50,7 @@ export class CustomerListPage {
 
   getAvatar(key) {
     let data = new Identicon(key, this.options).toString();
-    return this.sanitizer.bypassSecurityTrustUrl('data:image/svg+xml;base64,'+ data);
+    return this.sanitizer.bypassSecurityTrustUrl('data:image/svg+xml;base64,' + data);
   }
 
 
@@ -88,5 +92,23 @@ export class CustomerListPage {
     actionSheet.present();
   }
 
+  sendText(num: string) {
+    console.log(num);
+    let options = {
+      replaceLineBreaks: false, 
+      android: {
+        intent: 'INTENT'  
+      }
+    }
+    this.sms.send(num, 'Bonjour, I try to appeler vous !', options);
+  }
+
+  callCustomer(num: string) {
+    console.log(num);
+
+    this.callNumber.callNumber(num, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
 }
 

@@ -28,11 +28,11 @@
                 </div>
             </ion-item>
             <ion-item-options side="right">
-                <button ion-button color="primary">
+                <button ion-button color="primary" (click)="sendText(customer.telephone.num1)">
                     <ion-icon name="text"></ion-icon>
                     SMS
                 </button>
-                <button ion-button color="secondary">
+                <button ion-button color="secondary" (click)="callCustomer(customer.telephone.num1)">
                     <ion-icon name="call"></ion-icon>
                     Call
                 </button>

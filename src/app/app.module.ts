@@ -28,6 +28,9 @@ import { Tab2Page } from '../pages/tab2/tab2';
 import { Tab1Page } from '../pages/tab1/tab1';
 import { Tab1PageModule } from '../pages/tab1/tab1.module';
 import { Tab2PageModule } from '../pages/tab2/tab2.module';
+import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +59,9 @@ import { Tab2PageModule } from '../pages/tab2/tab2.module';
     CustomerListService,
     CityCodesService,
     { provide: LOCALE_ID, useValue: 'fr-FR' },
-    CalendarService
+    CalendarService,
+    CallNumber,
+    SMS
   ]
 })
 export class AppModule { }
