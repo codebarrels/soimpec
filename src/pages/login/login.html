@@ -6,12 +6,28 @@
 
 
 <ion-content padding id="welcome">
-    <img src="assets/imgs/calendar.jpg" class="logo" />
-    <h1 style="color: grey;"> Discover some intersting things, but, just by yoursef! </h1>
+    <ion-slides>
+        <ion-slide>
+            <ion-card>
+                <img src="assets/imgs/calendar.jpg" class="logo" />
+                <ion-card-content>
+                    <ion-card-title>
+                        Welcome here! you're the best man!
+                    </ion-card-title>
+                    <p>
+                    </p>
+                </ion-card-content>
+            </ion-card>
+        </ion-slide>
+        <ion-slide>
+            <h1 style="color: grey; text-align: left;">Discover some intersting things, just by yourself !</h1>
+        </ion-slide>
+        <ion-slide>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
 
 <ion-footer>
     <ion-toolbar>
         <button ion-button full outline round large (click)="doLogin()">Start</button>
     </ion-toolbar>
-</ion-footer>
