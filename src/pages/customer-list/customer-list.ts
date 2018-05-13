@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
-import { ActionSheetController } from 'ionic-angular';
+import { ActionSheetController, IonicPage } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Customer } from '../customer/customer.model';
 import { CustomerListService } from './customer-list.service';
 import { CustomerPage } from '../customer/customer';
 import * as Identicon from 'identicon.js';
 import { DomSanitizer } from '@angular/platform-browser';
+
 @Component({
   selector: 'page-list',
   templateUrl: 'customer-list.html'

@@ -23,12 +23,16 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
 import { Calendar } from '@ionic-native/calendar';
+import { Tab2Page } from '../pages/tab2/tab2';
+import { Tab1Page } from '../pages/tab1/tab1';
+import { Tab1PageModule } from '../pages/tab1/tab1.module';
+import { Tab2PageModule } from '../pages/tab2/tab2.module';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    CustomerListPage, 
+    // CustomerListPage,
     CalendarComponent
   ],
   imports: [
@@ -39,13 +43,16 @@ import { Calendar } from '@ionic-native/calendar';
     AngularFireDatabaseModule,
     CustomerPageModule,
     NgCalendarModule,
-    EventModalPageModule
+    EventModalPageModule,
+    Tab1PageModule,
+    Tab2PageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     CustomerListPage,
+
     CalendarComponent
   ],
   providers: [
