@@ -8,6 +8,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Tab2Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cal) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 }
