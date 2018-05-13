@@ -6,29 +6,48 @@ import { Observable } from 'rxjs/Observable';
 import { Customer } from '../customer/customer.model';
 import { CustomerListService } from './customer-list.service';
 import { CustomerPage } from '../customer/customer';
-
+import * as Identicon from 'identicon.js';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'page-list',
   templateUrl: 'customer-list.html'
 })
 export class CustomerListPage {
-  customersList: Observable<Customer[]>;
+  private customersList: Observable<Customer[]>;
+  private idCustomer: string;
+  private options = {
+    foreground: [255, 255, 255, 255],
+    background: [17, 69, 226, 255],
+    margin: 0.2,
+    size: 128,
+    format: 'svg'
+  };
 
   constructor(
     private fdb: AngularFireDatabase,
     private navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
-    private customerListService: CustomerListService) {
+    private customerListService: CustomerListService,
+    private sanitizer: DomSanitizer) {
     this.customersList = this.customerListService
       .getCustomersList()
       .snapshotChanges()
       .map(
-      changes => {
-        return changes.map(c => ({
-          key: c.payload.key, ...c.payload.val()
-        }))
-      })
+        changes => {
+          return changes.map(c => {
+            return({
+              key: c.payload.key,
+              ...c.payload.val()
+            })
+          })
+        })
   }
+
+  getAvatar(key) {
+    let data = new Identicon(key, this.options).toString();
+    return this.sanitizer.bypassSecurityTrustUrl('data:image/svg+xml;base64,'+ data);
+  }
+
 
   seeCustomer(event, cliente: Customer) {
     this.navCtrl.push(CustomerPage, { customer: cliente })
