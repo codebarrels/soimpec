@@ -30,6 +30,7 @@ import { Tab1PageModule } from '../pages/tab1/tab1.module';
 import { Tab2PageModule } from '../pages/tab2/tab2.module';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { SMS } from '@ionic-native/sms';
     { provide: LOCALE_ID, useValue: 'fr-FR' },
     CalendarService,
     CallNumber,
-    SMS
+    SMS,
+    LaunchNavigator  
   ]
 })
 export class AppModule { }

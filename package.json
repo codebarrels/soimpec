@@ -24,6 +24,7 @@
         "@ionic-native/calendar": "^4.7.0",
         "@ionic-native/call-number": "^4.7.0",
         "@ionic-native/core": "4.7.0",
+        "@ionic-native/launch-navigator": "^4.7.0",
         "@ionic-native/sms": "^4.7.0",
         "@ionic-native/splash-screen": "4.7.0",
         "@ionic-native/status-bar": "4.7.0",
@@ -32,8 +33,10 @@
         "angularfire2": "^5.0.0-rc.5-next",
         "call-number": "^1.0.1",
         "cordova-android": "7.0.0",
+        "cordova-plugin-actionsheet": "^2.3.3",
         "cordova-plugin-calendar": "^5.0.0",
         "cordova-plugin-device": "^2.0.2",
+        "cordova-plugin-dialogs": "^2.0.1",
         "cordova-plugin-ionic-keyboard": "^2.0.5",
         "cordova-plugin-ionic-webview": "^1.1.19",
         "cordova-plugin-splashscreen": "^5.0.2",
@@ -49,6 +52,7 @@
         "moment": "^2.22.1",
         "rxjs": "5.5.10",
         "sw-toolbox": "3.6.0",
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": "^4.2.0",
         "zone.js": "0.8.26"
     },
     "devDependencies": {
@@ -65,7 +69,8 @@
             "cordova-plugin-ionic-webview": {},
             "cordova-plugin-ionic-keyboard": {},
             "mx.ferreyra.callnumber": {},
-            "cordova-sms-plugin": {}
+            "cordova-sms-plugin": {},
+            "uk.co.workingedge.phonegap.plugin.launchnavigator": {}
         },
         "platforms": [
             "android"

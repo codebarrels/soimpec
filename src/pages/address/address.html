@@ -38,12 +38,11 @@
             {{address.codePostal}}, {{address.ville}}, FRANCE
         </ion-item>
     </ion-list>
+    <ion-item>
+        <button *ngIf="city.code" ion-button ion-button full [navPush]="AddressPage" (click)="validate()">
+            <ion-icon name="md-checkmark-circle-outline"></ion-icon>
+            Validate
+        </button>
+    </ion-item>
+
 </ion-content>
-<ion-footer *ngIf="city.code">
-    <ion-toolbar>
-        <button ion-button ion-button full [navPush]="AddressPage" (click)="validate()">
-                    <ion-icon name="md-checkmark-circle-outline"></ion-icon>
-                    Validate
-            </button>
-    </ion-toolbar>
-</ion-footer>

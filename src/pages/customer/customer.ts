@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { Customer } from './customer.model';
+import { Customer, Address } from './customer.model';
 import { CustomerListService } from '../customer-list/customer-list.service';
 import { CustomerListPage } from '../customer-list/customer-list';
 import { AddressPage } from '../address/address';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+
 
 
 @IonicPage()
@@ -23,7 +25,9 @@ export class CustomerPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private customerListService: CustomerListService,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController,
+    private launchNavigator: LaunchNavigator
+  ) {
     this.AddressPage = AddressPage;
     this.customer = navParams.get('customer') || new Customer();
     if (this.customer && this.customer.firstName) {
@@ -35,7 +39,7 @@ export class CustomerPage {
 
   public ionViewWillEnter() {
     this.customer.address = this.navParams.get('address') || this.customer.address;
-    console.log(this.customer.address);
+    // console.log(this.customer.address);
   }
 
   // goToAddress(){
@@ -88,7 +92,15 @@ export class CustomerPage {
       toast.present();
       return false;
     }
+  }
 
-
+  private navigateToCustomer(address: Address) {
+    let addressNav = address.numero + address.rue + address.codePostal + address.ville;
+    console.log('adresse', addressNav);
+    this.launchNavigator.navigate(addressNav)
+      .then(
+          success => console.log('Launched navigator'),
+          error => console.log('Error launching navigator', error)
+        );
   }
 }

@@ -26,6 +26,8 @@ export class AddressPage {
         if(this.address.numero && this.address.rue && this.address.codePostal && this.address.ville) {
             this.navCtrl.getPrevious().data.address = this.address;
             this.navCtrl.pop();
+        } else {
+            alert('Remplissez le numéro, la rue, le code postal et la ville avant de valider !')
         }
     }
 }

@@ -58,8 +58,12 @@
             </button>
             <button *ngIf="customer.address" [disabled]="!isEditMode" ion-button round large outline full [navPush]="AddressPage">
                     <ion-icon ios="ios-home" md="md-home"></ion-icon>
-                    {{customer.address.numero}} {{customer.address.rue}} {{customer.address.codePostal}} {{customer.address.ville}}
-                </button>
+                    {{customer.address.numero}} {{customer.address.rue}} <br/> {{customer.address.codePostal}} {{customer.address.ville}}
+            </button>
+            <button *ngIf="customer.address" ion-button round right (click)="navigateToCustomer(customer.address)">
+                    <ion-icon ios="ios-home" md="maps"></ion-icon>
+                    Go To : {{customer.address.numero}} {{customer.address.rue}} {{customer.address.codePostal}} {{customer.address.ville}}
+            </button>
         </ion-item>
     </ion-list>
     <ion-list>
