@@ -2,6 +2,7 @@ import { Component, LOCALE_ID } from "@angular/core";
 import { NavController, ModalController, AlertController } from 'ionic-angular';
 import * as moment from 'moment';
 import { CalendarService } from "./calendar.service";
+import { EventCalendar } from "./event-cal.model";
 @Component({
     selector: 'calendar-component',
     templateUrl: 'calendar.component.html',
@@ -34,7 +35,7 @@ export class CalendarComponent {
         modal.present();
         modal.onDidDismiss(data => {
             if (data) {
-                let eventData = data;
+                let eventData: EventCalendar = data;
 
                 eventData.startTime = new Date(data.startTime);
                 eventData.endTime = new Date(data.endTime);
@@ -70,4 +71,6 @@ export class CalendarComponent {
     onTimeSelected(ev) {
         this.selectedDay = ev.selectedTime;
     }
+
+
 }
