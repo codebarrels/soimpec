@@ -16,19 +16,20 @@ import { CustomerListPage } from '../pages/customer-list/customer-list';
 import { CustomerPageModule } from '../pages/customer/customer.module';
 import { CityCodesService } from '../components/address/city-codes.service';
 import { CalendarComponent } from '../components/calendar/calendar.component';
-import { NgCalendarModule  } from 'ionic2-calendar';
+import { NgCalendarModule } from 'ionic2-calendar';
 import { EventModalPage } from '../components/calendar/event-modal/event-modal';
 import { EventModalPageModule } from '../components/calendar/event-modal/event-modal.module';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
 import { Calendar } from '@ionic-native/calendar';
+import { CalendarService } from '../components/calendar/calendar.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    CustomerListPage, 
+    CustomerListPage,
     CalendarComponent
   ],
   imports: [
@@ -52,10 +53,11 @@ import { Calendar } from '@ionic-native/calendar';
     Calendar,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     CustomerListService,
     CityCodesService,
-    { provide: LOCALE_ID, useValue: 'fr-FR' }
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    CalendarService
   ]
 })
-export class AppModule {}
+export class AppModule { }

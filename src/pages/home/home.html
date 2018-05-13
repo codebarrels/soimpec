@@ -9,5 +9,16 @@
 
 <ion-content padding>
     <calendar-component></calendar-component>
+    <ion-item>
+        <button ion-button full large (click)="addEvent()">
+      <ion-icon name="add"></ion-icon>
+      Add event
+    </button>
+    </ion-item>
+    <ion-item>
+        <button ion-button full large (click)="openAgenda()">
+      <ion-icon name="calendar"></ion-icon>
+      Open Agenda
+    </button>
+    </ion-item>
 </ion-content>
-
