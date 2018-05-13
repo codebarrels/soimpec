@@ -4,7 +4,6 @@ import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,13 +24,14 @@ registerLocaleData(localeFr);
 import { Calendar } from '@ionic-native/calendar';
 import { CalendarService } from '../components/calendar/calendar.service';
 import { CustomerSelectorPage } from '../pages/customer-selector/customer-selector';
+import { Tab2Page } from '../pages/tab2/tab2';
+import { Tab1Page } from '../pages/tab1/tab1';
+import { Tab1PageModule } from '../pages/tab1/tab1.module';
+import { Tab2PageModule } from '../pages/tab2/tab2.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    CustomerListPage,
-    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,15 +40,13 @@ import { CustomerSelectorPage } from '../pages/customer-selector/customer-select
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     CustomerPageModule,
-    NgCalendarModule,
-    EventModalPageModule
+    Tab1PageModule,
+    Tab2PageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     CustomerListPage,
-    CalendarComponent
   ],
   providers: [
     Calendar,
