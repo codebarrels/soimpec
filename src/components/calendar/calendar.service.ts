@@ -22,8 +22,7 @@ export class CalendarService {
 
         if (this.calendar.hasReadWritePermission()) {
             let address = eventData.customer.address.numero + " " + eventData.customer.address.rue + " " +  eventData.customer.address.codePostal + " " + eventData.customer.address.ville;
-            let notes = eventData.customer.firstName + " " + eventData.customer.lastName + " (" + eventData.customer.type + ") ";
-            this.calendar.createEventWithOptions(eventData.title, address, notes, eventData.startTime, eventData.endTime, calOptions).then(message => {
+            this.calendar.createEventWithOptions(eventData.title, address, eventData.notes, eventData.startTime, eventData.endTime, calOptions).then(message => {
                 alert("Success: " + JSON.stringify(message));
             }).catch(message => {
                 alert("Error: " + message);

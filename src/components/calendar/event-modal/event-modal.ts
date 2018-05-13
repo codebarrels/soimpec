@@ -15,6 +15,7 @@ export class EventModalPage {
 
   event = {
     title: undefined,
+    notes: undefined,
     startTime: new Date().toISOString(),
     endTime: new Date().toISOString(),
     allDay: false,
@@ -43,7 +44,12 @@ export class EventModalPage {
   public ionViewWillEnter() {
     this.event.customer = this.navParams.get('customer') || null;
     if (this.event.customer && (!this.event.title || this.event.title.startsWith(this.defaultTitleBegin))) {
-      this.event.title = this.defaultTitleBegin + this.event.customer.firstName + " " + this.event.customer.lastName; 
+      this.event.title = this.defaultTitleBegin + this.event.customer.firstName + " " + this.event.customer.lastName;
+    }
+    if (this.event.customer) {
+      this.event.notes = this.event.customer.serviceList.join(',') + " service(s) for " +
+        this.event.customer.firstName + " " +
+        this.event.customer.lastName + " (" + this.event.customer.type + ") ";
     }
   }
 

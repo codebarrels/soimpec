@@ -5,7 +5,10 @@
         <ion-icon name="close"></ion-icon>
       </button>
         </ion-buttons>
-        <ion-title>Event Details</ion-title>
+        <ion-title>
+            <ion-icon name="add-circle"></ion-icon>
+            New Appointment
+        </ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -14,9 +17,14 @@
         <ion-item>
             <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
         </ion-item>
+        <ion-item-divider color="light">
+            <ion-icon name="person"></ion-icon> Customer
+        </ion-item-divider>
         <ion-item *ngIf="!event.customer">
-            <button ion-button full outline (click)="selectCustomer()">
-        <ion-icon name="person-add"></ion-icon> Customer
+            <button ion-button clear (click)="selectCustomer()">
+        <ion-icon name="person">
+          Add Customer
+        </ion-icon>
       </button>
         </ion-item>
         <ion-item *ngIf="event.customer">
@@ -27,10 +35,23 @@
             <p>
                 {{event?.customer?.address?.numero}} {{event?.customer?.address?.rue}} {{event?.customer?.address?.codePostal}} {{event?.customer?.address?.ville}}
             </p>
-            <button (click)="selectCustomer()" ion-button clear item-end>
-                <ion-icon name="create"></ion-icon>
-            </button>
+            <button (click)="selectCustomer()" ion-button clear large item-end>
+        <ion-icon name="create"></ion-icon>
+      </button>
         </ion-item>
+        <ion-item *ngIf="event.customer">
+            <ion-label>
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-label>
+            <div item-content>
+                <ion-textarea placeholder="Enter a description" [(ngModel)]="event.notes"></ion-textarea>
+            </div>
+        </ion-item>
+        <ion-item-divider color="light">
+            <ion-icon name="time"></ion-icon>
+            Date and time
+        </ion-item-divider>
+
         <ion-item>
             <ion-label>Start</ion-label>
             <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
