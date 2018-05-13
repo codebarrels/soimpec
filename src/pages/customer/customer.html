@@ -53,10 +53,10 @@
     <ion-list>
         <ion-list-header color="light">Address</ion-list-header>
         <ion-item>
-            <button *ngIf="!customer.address" ion-button round large outline full [navPush]="AddressPage">
+            <button *ngIf="!customer.address" [disabled]="!isEditMode" ion-button round large outline full [navPush]="AddressPage">
                 <ion-icon name="add"></ion-icon> Add Address
             </button>
-            <button *ngIf="customer.address" ion-button round large outline full [navPush]="AddressPage">
+            <button *ngIf="customer.address" [disabled]="!isEditMode" ion-button round large outline full [navPush]="AddressPage">
                     <ion-icon ios="ios-home" md="md-home"></ion-icon>
                     {{customer.address.numero}} {{customer.address.rue}} {{customer.address.codePostal}} {{customer.address.ville}}
                 </button>

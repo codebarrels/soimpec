@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Customer } from './customer.model';
 import { CustomerListService } from '../customer-list/customer-list.service';
 import { CustomerListPage } from '../customer-list/customer-list';
@@ -22,7 +22,8 @@ export class CustomerPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private customerListService: CustomerListService) {
+    private customerListService: CustomerListService,
+    private toastCtrl: ToastController) {
     this.AddressPage = AddressPage;
     this.customer = navParams.get('customer') || new Customer();
     if (this.customer && this.customer.firstName) {
@@ -33,7 +34,7 @@ export class CustomerPage {
   }
 
   public ionViewWillEnter() {
-    this.customer.address = this.navParams.get('address') || null;
+    this.customer.address = this.navParams.get('address') || this.customer.address;
     console.log(this.customer.address);
   }
 
@@ -61,13 +62,33 @@ export class CustomerPage {
   }
 
   private addCustomer(customer: Customer) {
-    this.customerListService.createCustomer(customer).then(ref => {
-      this.navCtrl.setRoot(CustomerListPage, { key: ref.key })
-    });
+    if (this.isValidForm(customer)) {
+      this.customerListService.createCustomer(customer).then(ref => {
+        this.navCtrl.setRoot(CustomerListPage, { key: ref.key })
+      });
+    }
   }
 
   private updateCustomer(customer: Customer) {
-    this.customerListService.updateCustomer(customer);
-    this.navCtrl.pop();
+    if (this.isValidForm(customer)) {
+      this.customerListService.updateCustomer(customer);
+      this.navCtrl.pop();
+    }
+  }
+
+  private isValidForm(customer: Customer) {
+    if (customer.firstName && customer.lastName && customer.address && customer.telephone && customer.serviceList && customer.type) {
+      return true;
+    } else {
+      let toast = this.toastCtrl.create({
+        message: 'Please complete customer information!',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+      return false;
+    }
+
+
   }
 }
