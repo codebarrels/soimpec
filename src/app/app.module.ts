@@ -17,6 +17,7 @@ import { CustomerPage } from '../pages/customer/customer';
 import { CustomerPageModule } from '../pages/customer/customer.module';
 import { AddressComponent } from '../components/address/address.component';
 import { CityCodesService } from '../components/address/city-codes.service';
+import { Calendar } from '@ionic-native/calendar';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CityCodesService } from '../components/address/city-codes.service';
     CustomerListPage
   ],
   providers: [
+    Calendar,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
