@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
-import { ActionSheetController, IonicPage } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Customer } from '../customer/customer.model';
 import { CustomerListService } from './customer-list.service';
