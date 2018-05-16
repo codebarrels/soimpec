@@ -1,27 +1,27 @@
 <ion-header>
     <ion-navbar>
-        <ion-buttons start>
+        <ion-buttons left>
             <button ion-button menuToggle>
                 <ion-icon name="menu"></ion-icon>
             </button>
         </ion-buttons>
         <ion-title>Calendar</ion-title>
         <ion-buttons right>
-            <button color="primary" ion-button icon-only (click)="addEvent()">
-                <ion-icon name="ios-create-outline"></ion-icon>
+            <button color="primary" ion-fab mini icon-only (click)="addEvent()">
+                <ion-icon name="md-create"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-        <ion-buttons center color="#c3ac3c">
+        <ion-buttons left color="#c3ac3c">
                 <button ion-button color="secondary" (click)="openAgenda()">
-                    <ion-icon name="ios-calendar"></ion-icon>
+                    <ion-icon name="md-calendar"></ion-icon>
                      Agenda
                 </button>
             </ion-buttons>
-        <ion-title start>
+        <ion-title>
             {{ viewTitle }}
         </ion-title>
 
