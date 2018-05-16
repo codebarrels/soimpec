@@ -56,7 +56,16 @@ export class CalendarService {
     }
 
     getEventsCalendarList() {
-        return this.eventCalendarListRef;
+        return this.eventCalendarListRef.snapshotChanges()
+        .map(
+        changes => {
+            return changes.map(c => {
+            return({
+                key: c.payload.key,
+                ...c.payload.val()
+            })
+            })
+        });
     }
 
     // updateEventCalendar(eventData: EventCalendar) {
