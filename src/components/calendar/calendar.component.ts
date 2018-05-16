@@ -28,20 +28,9 @@ export class CalendarComponent {
         private modalCtrl: ModalController,
         private alertCtrl: AlertController,
         private calendarService: CalendarService) {
+            
             let events =this.eventSource;
-            this.eventCalendarList = 
-            this.calendarService.getEventsCalendarList()
-                .snapshotChanges()
-                .map(
-                changes => {
-                    return changes.map(c => {
-                    return({
-                        key: c.payload.key,
-                        ...c.payload.val()
-                    })
-                    })
-                })
-
+            this.eventCalendarList = this.calendarService.getEventsCalendarList();
             this.eventCalendarList.subscribe( 
                 (res) => {
                         res.map(event => {
